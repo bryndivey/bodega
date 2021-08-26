@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './registerServiceWorker'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)

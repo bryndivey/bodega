@@ -7,19 +7,11 @@
   <b>Staff Member</b> <b-form-input v-model="name"></b-form-input>
     <b-table class="mt-4" :items="items" :fields="fields">
       <template #cell(category)="data">
-        {{ data.item.category }}
-      </template>
-
-      <template #cell(category)="data">
         <span :style="{ 'background-color': background_colour(data.item.category) }">
           <b>{{ data.item.category }}</b>
         </span>
       </template>
       
-      <template #cell(name)="data">
-        {{ data.item.name }}
-      </template>
-
       <template #cell(name)="data">
         {{ data.item.name }}
       </template>
