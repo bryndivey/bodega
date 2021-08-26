@@ -15,7 +15,7 @@
           <b>{{ data.item.category }}</b>
         </span>
       </template>
-
+      
       <template #cell(name)="data">
         {{ data.item.name }}
       </template>
@@ -166,7 +166,6 @@
 
     methods: {
       background_colour: function(category) {
-        console.log("called fpr", category)
         return this.colours[category]
       },
 
@@ -188,6 +187,8 @@
 
         console.log(submission)
         axios.post("http://localhost:5000/", submission).then(response => console.log(response))
+        console.log("Waiting")
+
       }
     },
   }

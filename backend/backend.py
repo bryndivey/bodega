@@ -10,5 +10,6 @@ CORS(app)
 def hello_world():
     print(request.json)
     with open(f"{request.json['name']}-{request.json['timestamp']}", 'w') as f:
+        print(f"Dumping at time {request.json['timestamp']}")
         json.dump(request.json, f)
         return ''
