@@ -7,9 +7,9 @@
   <b>Staff Member</b> <b-form-input v-model="name"></b-form-input>
     <b-table class="mt-4" :items="items" :fields="fields">
       <template #cell(category)="data">
-        <span :style="{ 'background-color': background_colour(data.item.category) }">
+        <div :style="{ 'background-color': background_colour(data.item.category) }">
           <b>{{ data.item.category }}</b>
-        </span>
+        </div>
       </template>
       
       <template #cell(name)="data">
@@ -122,6 +122,7 @@
 
       return {
         name: '',
+        products: products,
         locations: locations,
         items: counts,
         colours: colours,
@@ -157,13 +158,29 @@
     },
 
     methods: {
+      get_product_locations: function(name) {
+        for(const category in this.products) {
+          for(const product_name in this.products[category]) {
+            let product = this.products[category][product_name]
+            if(product.name == name) {
+              console.log('Y', product)
+            } else {
+              console.log('N', product)  
+            }
+          }
+        }
+      },
+
       background_colour: function(category) {
         return this.colours[category]
       },
 
       submit: function() {
+        //let errors = []
+
         let counts = JSON.parse(JSON.stringify(this.items))
         for(const item of counts) {
+          console.log("THE ITEM", this.get_product_locations(item.name))
           for(const location of this.locations) {
             if(typeof(item[location]) == 'undefined' || typeof(item[location]) == 'boolean' || item[location] == null ) {
               item[location] = 0
